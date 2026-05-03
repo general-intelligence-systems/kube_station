@@ -4,8 +4,8 @@ Let the ocean meet the tracks...
 
 ## Setup
 
-This project contains the `kube_station` located in `./engines/kube_station`.
-The root directory of this project is itself a complete working example of `kube_station` that can be run locally or deployed.
+This repo contains the `kube_station` gem located in `./engines/kube_station`.
+The root directory of this project is itself a **complete working example** of `kube_station` that can be run locally or deployed.
 
 ### Engine only
 
