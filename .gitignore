@@ -1,4 +1,5 @@
 .gem
+kubeconfig.yaml
 .bundler
 .direnv
 *.rbc

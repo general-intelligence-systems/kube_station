@@ -1,0 +1,35 @@
+volumes:
+  postgres_data:
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  db_test:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "6432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+
+  cluster:
+    image: "rancher/k3s:latest"
+    command: server
+    privileged: true
+    restart: always
+    environment:
+      - K3S_TOKEN=change-me-or-face-the-consequences
+      - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
+      - K3S_KUBECONFIG_MODE=666
+    volumes:
+      - .:/output
+    ports:
+      - 6443:6443
