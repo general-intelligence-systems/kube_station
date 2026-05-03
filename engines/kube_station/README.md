@@ -1,28 +1,20 @@
-# Kube
-Short description and motivation.
-
-## Usage
-How to use my plugin.
+# Kube::Station
+Kubernetes on Rails...
 
 ## Installation
-Add this line to your application's Gemfile:
+
+Add to your application's Gemfile:
 
 ```ruby
-gem "kube"
+gem "kube_station", path: "engines/kube_station"
 ```
 
-And then execute:
+Install migrations and run them:
+
 ```bash
-$ bundle
+bin/rails kube_station:install:migrations
+bin/rails db:migrate
 ```
-
-Or install it yourself as:
-```bash
-$ gem install kube
-```
-
-## Contributing
-Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

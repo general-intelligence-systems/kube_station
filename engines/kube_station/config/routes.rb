@@ -1,2 +1,2 @@
-Kube::Engine.routes.draw do
+Kube::Station::Engine.routes.draw do
 end

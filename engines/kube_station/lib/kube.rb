@@ -1,6 +1,8 @@
-require "kube/version"
-require "kube/engine"
+require "kube/station/version"
+require "kube/station/engine"
 
 module Kube
-  # Your code goes here...
+  module Station
+    # Your code goes here...
+  end
 end

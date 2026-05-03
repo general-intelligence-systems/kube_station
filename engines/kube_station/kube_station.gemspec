@@ -1,8 +1,8 @@
-require_relative "lib/kube/version"
+require_relative "lib/kube/station/version"
 
 Gem::Specification.new do |spec|
   spec.name        = "kube_station"
-  spec.version     = Kube::VERSION
+  spec.version     = Kube::Station::VERSION
   spec.authors     = [ "Nathan Kidd" ]
   spec.email       = [ "nathankidd@hey.com" ]
   spec.homepage    = "https://github.com/general-intelligence-systems/kube_station"
