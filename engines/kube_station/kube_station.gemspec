@@ -18,4 +18,6 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 8.1.3"
+  spec.add_dependency "kube_cluster", "~> 0.4.11"
+  spec.add_dependency "rails-active-ui", "~> 0.3"
 end

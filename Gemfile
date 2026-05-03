@@ -43,3 +43,5 @@ group :development do
 end
 
 gem "kube_station", path: "engines/kube_station"
+
+gem "rails-active-ui", "~> 0.3"
