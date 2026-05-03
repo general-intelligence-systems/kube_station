@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 system "docker compose up -d"
-exec "./bin/rails", "server", *ARGV
+exec "bundle", "exec", "falcon", "serve", "-b", "http://localhost:3000", *ARGV
