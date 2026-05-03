@@ -15,7 +15,7 @@ bin/rails kube_station:migrations:install
 bin/rails db:migrate
 ```
 
-### Standalone
+### Standalone app
 
 ```
 git clone https://github.com/general-intelligence-systems/kube_station
