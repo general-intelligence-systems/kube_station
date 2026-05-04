@@ -12,11 +12,13 @@ bin/dev
 bin/rails db:create db:migrate
 bin/rails db:seed            # creates default Config, Cluster, and 3 approved resources
 
-# Run all engine tests
-bin/rails test engines/kube_station/test/
+# Run all engine tests (from engines/kube_station/)
+cd engines/kube_station
+RAILS_ENV=test bin/rails db:create db:migrate   # first time only
+RAILS_ENV=test bin/rails test
 
 # Run a single test file
-bin/rails test engines/kube_station/test/kube_test.rb
+RAILS_ENV=test bin/rails test test/controllers/kube/station/kinds/resources_controller_test.rb
 
 # Rails console
 bin/rails console

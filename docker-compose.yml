@@ -20,16 +20,21 @@ services:
     tmpfs:
       - /var/lib/postgresql/data
 
+  #cluster:
+  #  image: "rancher/k3s:latest"
+  #  command: server
+  #  privileged: true
+  #  restart: always
+  #  environment:
+  #    - K3S_TOKEN=change-me-or-face-the-consequences
+  #    - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
+  #    - K3S_KUBECONFIG_MODE=666
+  #  volumes:
+  #    - .:/output
+  #  ports:
+  #    - 6443:6443
   cluster:
-    image: "rancher/k3s:latest"
-    command: server
-    privileged: true
+    image: registry.k8s.io/kwok/cluster:v0.6.1-k8s.v1.30.4
     restart: always
-    environment:
-      - K3S_TOKEN=change-me-or-face-the-consequences
-      - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
-      - K3S_KUBECONFIG_MODE=666
-    volumes:
-      - .:/output
     ports:
-      - 6443:6443
+      - "8080:8080"

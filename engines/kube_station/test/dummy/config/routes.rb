@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Kube::Engine => "/kube"
+  mount Kube::Station::Engine => "/kube"
 end

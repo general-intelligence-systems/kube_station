@@ -31,9 +31,9 @@ module Kube
 
       def apply_resource(data)
         with_connection do |instance|
-          ctl = instance.connection.ctl
-          json = JSON.generate(data)
-          ctl.run("apply -f - --stdin #{json}")
+          kubeconfig = instance.connection.ctl.kubeconfig
+          json = data.is_a?(String) ? data : JSON.generate(data)
+          sh { kubectl "apply -f - --kubeconfig=#{kubeconfig}", _stdin: json }
         end
       end
     end

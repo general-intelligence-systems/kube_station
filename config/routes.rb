@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount Kube::Station::Engine, at: "/kube"
 
-  root to: redirect("/kube/kinds")
+  root to: redirect("/kube/clusters")
+  get "/kube", to: redirect("/kube/clusters")
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

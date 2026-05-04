@@ -1,7 +1,7 @@
 Segment {
   Form(
     model: kind,
-    url: kinds_path,
+    url: approved_index_path,
     data: {
       controller: "fui-form",
       turbo_action: "replace",

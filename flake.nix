@@ -10,12 +10,20 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        packages.kwatch = pkgs.buildGoModule {
+          pname = "kwatch";
+          version = "0.1.0";
+          src = ./engines/kube_station/bin/kwatch;
+          vendorHash = "sha256-pnvt4kM8Z0TmXUOdnW1kpgZxYKbnZ7Sv/j8z41t+SSE=";
+        };
+
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.pkg-config ];
           buildInputs = with pkgs; [
             ruby_3_4
             libyaml 
             openssl
+            go
           ];
 
           shellHook = ''

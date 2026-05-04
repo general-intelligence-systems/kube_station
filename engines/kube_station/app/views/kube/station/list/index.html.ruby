@@ -1,7 +1,7 @@
 Menu(attached: "top") {
-  BackButton(href: kinds_path, icon: "arrow left")
-  MenuItem(header: true) { text @kind.kind }
-  MenuItem(href: new_kind_resource_path(@kind), icon: "plus") { text "New" }
+  BackButton(href: cluster_group_version_kinds_path(@cluster, params[:group_id], params[:version_id]), icon: "arrow left")
+  MenuItem(header: true) { text @kind_name }
+  MenuItem(href: new_cluster_group_version_kind_list_path(@cluster, params[:group_id], params[:version_id], @kind_name), icon: "plus") { text "New" }
 }
 
 if @error.present?
@@ -12,7 +12,7 @@ end
 
 Table(celled: true, striped: true, rows: @items) { |c|
   c.column(:name, heading: "Name") { |item|
-    LinkTo(href: kind_resource_path(@kind, item[:metadata][:name], namespace: item[:metadata][:namespace])) {
+    LinkTo(href: cluster_group_version_kind_list_path(@cluster, params[:group_id], params[:version_id], @kind_name, item[:metadata][:name], namespace: item[:metadata][:namespace])) {
       text item[:metadata][:name]
     }
   }

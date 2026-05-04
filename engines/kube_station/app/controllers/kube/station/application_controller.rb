@@ -1,7 +1,7 @@
 module Kube
   module Station
     class ApplicationController < ActionController::Base
-      ActionView::Base.default_form_builder = FomanticFormBuilder
+      ActionView::Base.default_form_builder = Kube::Station::FomanticFormBuilder
 
       before_action :set_page_title
 
@@ -9,7 +9,7 @@ module Kube
       allow_browser versions: :modern
 
       # Changes to the importmap will invalidate the etag for HTML responses
-      stale_when_importmap_changes
+      stale_when_importmap_changes if respond_to?(:stale_when_importmap_changes)
 
       private
 

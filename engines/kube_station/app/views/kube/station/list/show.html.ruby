@@ -1,15 +1,15 @@
 Menu(attached: "top") {
-  BackButton(href: kind_resources_path(@kind), icon: "arrow left")
+  BackButton(href: cluster_group_version_kind_list_index_path(@cluster, params[:group_id], params[:version_id], @kind_name), icon: "arrow left")
   MenuItem(header: true) { text @item[:metadata][:name] }
   SubMenu(position: "right") {
-    MenuItem(href: edit_kind_resource_path(@kind, @item[:metadata][:name], namespace: @item[:metadata][:namespace]), icon: "edit") { text "Edit" }
+    MenuItem(href: edit_cluster_group_version_kind_list_path(@cluster, params[:group_id], params[:version_id], @kind_name, @item[:metadata][:name], namespace: @item[:metadata][:namespace]), icon: "edit") { text "Edit" }
   }
 }
 
 Segment {
   Header(size: :h3, dividing: true) {
     text @item[:metadata][:name]
-    SubHeader { text "#{@kind.kind} in #{@item[:metadata][:namespace] || 'cluster'}" }
+    SubHeader { text "#{@kind_name} in #{@item[:metadata][:namespace] || 'cluster'}" }
   }
 
   Table(celled: true, definition: true) { |c|

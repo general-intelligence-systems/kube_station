@@ -31,6 +31,8 @@
 #   field_class:  String  – extra classes on the wrapping .field div
 #   input_class:  String  – extra classes on the input element itself
 #
+module Kube
+module Station
 class FomanticFormBuilder < ActionView::Helpers::FormBuilder
   COLUMN_WORDS = %w[
     one two three four five six seven eight nine ten
@@ -365,6 +367,8 @@ class FomanticFormBuilder < ActionView::Helpers::FormBuilder
   def class_names(*args)
     args.flatten.compact.reject { |v| v == false || v.to_s.strip.empty? }.join(" ")
   end
+end
+end
 end
 
 # ─────────────────────────────────────────────────────────────────────────────
