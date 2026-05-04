@@ -1,10 +1,8 @@
 module Kube
   module Station
     class GraphController < ApplicationController
-      layout "kube/station/graph"
       def show
-        @cluster = Cluster.first
-        return unless @cluster
+        @cluster = Cluster.find(params[:cluster_id])
 
         nodes = {}
         edges = []

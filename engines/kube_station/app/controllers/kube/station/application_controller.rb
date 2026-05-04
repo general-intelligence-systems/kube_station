@@ -11,6 +11,12 @@ module Kube
       # Changes to the importmap will invalidate the etag for HTML responses
       stale_when_importmap_changes if respond_to?(:stale_when_importmap_changes)
 
+      def default_url_options
+        options = super
+        options[:namespace] = params[:namespace] if params[:namespace].present?
+        options
+      end
+
       private
 
         def set_page_title

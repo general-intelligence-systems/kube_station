@@ -3,6 +3,7 @@ module Kube
     class ListController < ApplicationController
       before_action :set_cluster
       before_action :set_kind_name
+      before_action :set_namespaces, only: [:index]
       before_action :set_item, only: [:show, :edit, :update]
 
       def index
@@ -61,10 +62,27 @@ module Kube
       def list_items
         @cluster.with_connection do |instance|
           ctl = instance.connection.ctl
-          json = ctl.run("get #{@kind_name} -o json")
+          cmd = "get #{@kind_name} -o json"
+          if params[:namespace].present?
+            cmd += " -n #{params[:namespace]}"
+          else
+            cmd += " --all-namespaces"
+          end
+          json = ctl.run(cmd)
           parsed = JSON.parse(json, symbolize_names: true)
           parsed[:items] || []
         end
+      end
+
+      def set_namespaces
+        @namespaces = @cluster.with_connection do |instance|
+          ctl = instance.connection.ctl
+          json = ctl.run("get namespaces -o json")
+          parsed = JSON.parse(json, symbolize_names: true)
+          (parsed[:items] || []).map { |ns| ns[:metadata][:name] }
+        end
+      rescue
+        @namespaces = []
       end
 
       def set_item

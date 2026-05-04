@@ -3,7 +3,7 @@ module Kube
     module Graph
       class NodeController < ApplicationController
         def show
-          @cluster = Cluster.first
+          @cluster = Cluster.find(params[:cluster_id])
           uid = params[:uid]
 
           @cluster.resources.each do |resource|

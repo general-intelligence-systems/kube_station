@@ -33,8 +33,8 @@ services:
   #    - .:/output
   #  ports:
   #    - 6443:6443
-  cluster:
-    image: registry.k8s.io/kwok/cluster:v0.6.1-k8s.v1.30.4
-    restart: always
-    ports:
-      - "8080:8080"
+  #cluster:
+  #  image: registry.k8s.io/kwok/cluster:v0.6.1-k8s.v1.30.4
+  #  restart: always
+  #  ports:
+  #    - "8080:8080"

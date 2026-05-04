@@ -1,7 +1,7 @@
 Kube::Station::Engine.routes.draw do
   resources :approved, only: [:index, :new, :create, :destroy], path: "resources/approved"
 
-  resources :clusters, only: [:index] do
+  resources :clusters, only: [:index, :new, :create, :edit, :update] do
     resources :groups, only: [:index], constraints: { id: /[^\/]+/ } do
       resources :versions, only: [:index] do
         resources :kinds, only: [:index] do
@@ -9,8 +9,8 @@ Kube::Station::Engine.routes.draw do
         end
       end
     end
-  end
 
-  get "graph", to: "graph#show"
-  get "graph/node/:uid", to: "graph/node#show", as: :graph_node
+    get "graph", to: "graph#show", as: :graph
+    get "graph/node/:uid", to: "graph/node#show", as: :graph_node
+  end
 end
