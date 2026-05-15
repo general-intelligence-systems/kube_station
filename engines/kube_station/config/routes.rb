@@ -1,4 +1,6 @@
 Kube::Station::Engine.routes.draw do
+  root "clusters#index"
+
   resources :approved, only: [:index, :new, :create, :destroy], path: "resources/approved"
 
   resources :clusters, only: [:index, :new, :create, :edit, :update] do
